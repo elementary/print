@@ -3,4 +3,4 @@ Name=Print
 Icon=document-print
 Description=Print
 MimeType=text
-Exec=print %F
+Exec=pantheon-print %F
