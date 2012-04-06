@@ -31,12 +31,12 @@ include(ValaVersion)
 ensure_vala_version("0.14.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
-    src/print.vala
+    src/pantheon-print.vala
 PACKAGES
     gtk+-3.0
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/vapi/
 )
-add_executable (print ${VALA_C})
-install(TARGETS print RUNTIME DESTINATION bin)
+add_executable (pantheon-print ${VALA_C})
+install(TARGETS pantheon-print RUNTIME DESTINATION bin)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/print.contract DESTINATION share/contractor)
