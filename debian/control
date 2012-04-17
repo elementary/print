@@ -13,6 +13,8 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends: contractor
 Enhances: contractor
+Replaces: contractor (<< 0.2-0~r11)
+Breaks: contractor (<< 0.2-0~r11)
 Description: Printing support for Contractor
  This package allows applications to print files over Contractor instead of
  implementing printing support themselves.
