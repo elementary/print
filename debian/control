@@ -18,3 +18,15 @@ Breaks: contractor (<< 0.2-0~r11)
 Description: Printing support for Contractor
  This package allows applications to print files over Contractor instead of
  implementing printing support themselves.
+
+Package: pantheon-print-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: pantheon-print (= ${binary:Version}), ${misc:Depends}
+Enhances: pantheon-print
+Description: Printing support for Contractor (debugging symbols)
+ This package allows applications to print files over Contractor instead of
+ implementing printing support themselves.
+ .
+ This package contains debugging symbols for pantheon-print.
