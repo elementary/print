@@ -4,3 +4,4 @@ Icon=document-print
 Description=Print
 MimeType=text
 Exec=pantheon-print %F
+X-GNOME-Gettext-Domain=gtk30
