@@ -2,15 +2,16 @@ Source: pantheon-print
 Section: misc
 Priority: optional
 Maintainer: Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>
-Build-Depends: debhelper (>= 8.0.0), cmake (>= 2.8), libgtk-3-dev, valac (>= 0.14) | valac-0.14
+Build-Depends: cmake (>= 2.8),
+               debhelper (>= 8.0.0),
+               libgtk-3-dev,
+               valac (>= 0.14) | valac-0.14
 Standards-Version: 3.9.2
 Homepage: https://launchpad.net/pantheon-print
-#Vcs-Git: git://git.debian.org/collab-maint/pantheon-print.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/pantheon-print.git;a=summary
 
 Package: pantheon-print
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: contractor
 Enhances: contractor
 Replaces: contractor (<< 0.2-0~r11)
