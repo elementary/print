@@ -32,7 +32,7 @@ vala_precompile(VALA_C
 PACKAGES
     gtk+-3.0
 OPTIONS
-    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/vapi/
+    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/vapi/ -g --save-temps
 )
 add_executable (pantheon-print ${VALA_C})
 install(TARGETS pantheon-print RUNTIME DESTINATION bin)
