@@ -18,23 +18,19 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-public class CustomOperation : Gtk.PrintOperation { 
-       
+public class CustomOperation : Gtk.PrintOperation {        
     const int FONT_SIZE = 12;
     string content = "";
     int[] page_breaks;
     Cairo.Context context = null;
     Pango.Layout layout = null;
-    Pango.FontDescription desc;
-    
+    Pango.FontDescription desc;    
     int height;
     int width;
     int line_count;
 
-    public CustomOperation (string[] args, Gtk.Window main_window) {
-        
-        var file = File.new_for_commandline_arg (args[1]);
-    
+    public CustomOperation (string[] args, Gtk.Window main_window) {        
+        var file = File.new_for_commandline_arg (args[1]);  
 
         if (file.query_exists ()) {
             try {
@@ -47,30 +43,25 @@ public class CustomOperation : Gtk.PrintOperation {
             } catch (Error e) {
                 error ("%s", e.message);
             }
-        }
-        
-        content = content.replace("&", "&amp;");        
+        }        
 
+        content = content.replace("&", "&amp;");       
 
         var setup = new Gtk.PageSetup ();
+
         setup.set_top_margin (15, Gtk.Unit.MM);
         setup.set_bottom_margin (15, Gtk.Unit.MM);
         setup.set_right_margin (20, Gtk.Unit.MM);
         setup.set_left_margin (20, Gtk.Unit.MM);
-        set_default_page_setup (setup);
-        
-       begin_print.connect (beginprint);
-              
-       draw_page.connect (drawpage);
-
-
+        set_default_page_setup (setup);        
+    	begin_print.connect (beginprint);              
+    	draw_page.connect (drawpage);
     }
 
     void beginprint (Gtk.PrintContext print_context) {
-
         layout = print_context.create_pango_layout ();
-
         layout.set_wrap (Pango.WrapMode.WORD_CHAR);
+
         desc = new Pango.FontDescription ();
         desc.set_family ("Open Sans");
         desc.set_absolute_size (FONT_SIZE*Pango.SCALE);
@@ -78,10 +69,9 @@ public class CustomOperation : Gtk.PrintOperation {
         
         width = (int)print_context.get_width ();
         layout.set_width (Pango.SCALE*width);
-        height = (int)print_context.get_height ();
-       
-        layout.set_markup (content, -1);
-             
+        height = (int)print_context.get_height ();     
+  
+        layout.set_markup (content, -1);             
         line_count = layout.get_line_count ();
         Pango.LayoutLine layout_line;
 
@@ -89,7 +79,6 @@ public class CustomOperation : Gtk.PrintOperation {
 
         for (int line = 0; line < line_count; ++line) {
             Pango.Rectangle ink_rect, logical_rect;
-
             layout_line = layout.get_line (line);
             layout_line.get_extents (out ink_rect, out logical_rect);
 
@@ -108,19 +97,17 @@ public class CustomOperation : Gtk.PrintOperation {
 
     void drawpage(Gtk.PrintContext print_context, int page_num) {
         context = print_context.get_cairo_context ();
-
-        context.set_source_rgb (0, 0, 0);       
-        
+        context.set_source_rgb (0, 0, 0);    
+           
         int layout_width, layout_height;
-        layout.get_size (out layout_width, out layout_height);
-        
-        context.move_to(layout_width /2, (height - layout_height/Pango.SCALE)/2);
-        
-        Pango.cairo_show_layout (context, layout);
-        
+
+        layout.get_size (out layout_width, out layout_height);        
+        context.move_to(layout_width / 2, (height - layout_height/Pango.SCALE) / 2);        
+        Pango.cairo_show_layout (context, layout); 
+       
         int line_num = 0;
-        var line_per_page = height / FONT_SIZE;
-        
+        var line_per_page = height / FONT_SIZE;    
+    
         if (line_count > line_per_page * (page_num + 1)) 
             line_num = line_per_page * (page_num + 1);
         else
@@ -140,8 +127,8 @@ public class CustomOperation : Gtk.PrintOperation {
 
 public static void main (string[] args) {
   	Gtk.init (ref args);
-  	var main_window = new Gtk.Window ();
-  	
+  	var main_window = new Gtk.Window ();  	
   	var operation = new CustomOperation (args, main_window);
+
   	operation.run (Gtk.PrintOperationAction.PRINT_DIALOG, main_window);
 }
