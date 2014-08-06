@@ -46,6 +46,8 @@ public class CustomOperation : Gtk.PrintOperation {
         }        
 
         content = content.replace("&", "&amp;");       
+        content = content.replace("<", "&lt;");
+        content = content.replace(">", "&gt;");
 
         var setup = new Gtk.PageSetup ();
 
