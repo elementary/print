@@ -45,9 +45,9 @@ public class CustomOperation : Gtk.PrintOperation {
             }
         }        
 
-        content = content.replace("&", "&amp;");       
-        content = content.replace("<", "&lt;");
-        content = content.replace(">", "&gt;");
+        //content = content.replace("&", "&amp;");       
+        //content = content.replace("<", "&lt;");
+        //content = content.replace(">", "&gt;");
 
         var setup = new Gtk.PageSetup ();
 
@@ -73,7 +73,8 @@ public class CustomOperation : Gtk.PrintOperation {
         layout.set_width (Pango.SCALE*width);
         height = (int)print_context.get_height ();     
   
-        layout.set_markup (content, -1);             
+        //layout.set_markup (content, -1);             
+        layout.set_text (content, -1);
         line_count = layout.get_line_count ();
         Pango.LayoutLine layout_line;
 
