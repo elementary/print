@@ -1,3 +1,9 @@
+pantheon-print (0.1.2) trusty; urgency=low
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementaryos.org>  Fri, 10 Apr 2015 22:05:16 -0500
+
 pantheon-print (0.1.1) precise; urgency=low
 
   * New upstream release.
