@@ -1,0 +1,21 @@
+project(
+    'pantheon-print',
+    'vala', 'c',
+    version: '0.1.2'
+)
+
+executable(
+    meson.project_name(),
+    'src/' + meson.project_name() + '.vala',
+    dependencies: [
+        dependency('gtk+-3.0'),
+        meson.get_compiler('vala').find_library('posix'),
+        meson.get_compiler('c').find_library('m', required : false)
+    ],
+    install : true
+)
+
+install_data(
+    'data/print.contract',
+    install_dir: join_paths(get_option('datadir'), 'contractor')
+)
