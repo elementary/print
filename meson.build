@@ -1,5 +1,5 @@
 project(
-    'pantheon-print',
+    'io.elementary.print',
     'vala', 'c',
     version: '0.1.2'
 )
@@ -16,6 +16,6 @@ executable(
 )
 
 install_data(
-    'data/print.contract',
+    'data/' + meson.project_name() + '.contract',
     install_dir: join_paths(get_option('datadir'), 'contractor')
 )
