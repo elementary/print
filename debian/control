@@ -1,15 +1,15 @@
-Source: pantheon-print
+Source: io.elementary.print
 Section: misc
 Priority: optional
-Maintainer: Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>
-Build-Depends: cmake (>= 2.8),
-               debhelper (>= 8.0.0),
+Maintainer: Cody Garver <cody@elementary.io>
+Build-Depends: debhelper (>= 10.5.1),
                libgtk-3-dev,
-               valac (>= 0.14) | valac-0.14
-Standards-Version: 3.9.2
-Homepage: https://launchpad.net/pantheon-print
+               meson,
+               valac (>= 0.26)
+Standards-Version: 4.1.1
+Homepage: https://github.com/elementary/print
 
-Package: pantheon-print
+Package: io.elementary.print
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: contractor
@@ -18,14 +18,10 @@ Description: Printing support for Contractor
  This package allows applications to print files over Contractor instead of
  implementing printing support themselves.
 
-Package: pantheon-print-dbg
+Package: pantheon-print
 Architecture: any
-Section: debug
-Priority: extra
-Depends: pantheon-print (= ${binary:Version}), ${misc:Depends}
-Enhances: pantheon-print
-Description: Printing support for Contractor (debugging symbols)
- This package allows applications to print files over Contractor instead of
- implementing printing support themselves.
- .
- This package contains debugging symbols for pantheon-print.
+Section: oldlibs
+Priority: optional
+Depends: io.elementary.print, ${misc:Depends}
+Description: transitional dummy package
+ This is a transitional dummy package, it is safe to remove.
