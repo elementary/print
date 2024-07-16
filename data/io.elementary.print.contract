@@ -4,4 +4,4 @@ Icon=document-print
 Description=Print
 MimeType=text
 Exec=io.elementary.print %F
-X-GNOME-Gettext-Domain=gtk30
+X-GNOME-Gettext-Domain=gtk40
