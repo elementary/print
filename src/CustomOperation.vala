@@ -29,8 +29,8 @@ public class CustomOperation : Gtk.PrintOperation {
     int width;
     int line_count;
 
-    public CustomOperation (string[] args, Gtk.Window main_window) {        
-        var file = File.new_for_commandline_arg (args[1]);  
+    public CustomOperation (File[] files, Gtk.Window main_window) {
+        var file = files[0];
 
         if (file.query_exists ()) {
             try {
@@ -121,12 +121,4 @@ public class CustomOperation : Gtk.PrintOperation {
         }
     }
 
-}
-
-public static void main (string[] args) {
-  	Gtk.init (ref args);
-  	var main_window = new Gtk.Window ();  	
-  	var operation = new CustomOperation (args, main_window);
-
-  	operation.run (Gtk.PrintOperationAction.PRINT_DIALOG, main_window);
 }

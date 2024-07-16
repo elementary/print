@@ -6,9 +6,12 @@ project(
 
 executable(
     meson.project_name(),
-    'src/' + meson.project_name() + '.vala',
+    'src/Application.vala',
+    'src/CustomOperation.vala',
     dependencies: [
-        dependency('gtk+-3.0'),
+        dependency('gtk4'),
+        dependency('cairo'),
+        dependency('pango'),
         meson.get_compiler('vala').find_library('posix'),
         meson.get_compiler('c').find_library('m', required : false)
     ],
